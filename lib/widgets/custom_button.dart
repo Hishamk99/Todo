@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:to_do_app/constants.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key});
-
+  const CustomButton({
+    super.key,
+    required this.txt,
+  });
+  final String txt;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,10 +16,10 @@ class CustomButton extends StatelessWidget {
       ),
       width: MediaQuery.of(context).size.width,
       height: 50,
-      child: const Center(
+      child: Center(
         child: Text(
-          'Add',
-          style: TextStyle(
+          txt,
+          style: const TextStyle(
             color: Colors.black,
             fontSize: 20,
             fontWeight: FontWeight.bold,

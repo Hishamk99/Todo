@@ -29,7 +29,9 @@ class AddTaskButtomSheet extends StatelessWidget {
             SizedBox(
               height: 25,
             ),
-            CustomButton(),
+            CustomButton(
+              txt: 'Add',
+            ),
             SizedBox(
               height: 10,
             ),

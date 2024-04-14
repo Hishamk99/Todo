@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/screens/edit_note_view.dart';
 
 class TaskItem extends StatelessWidget {
   const TaskItem({super.key});
@@ -35,7 +36,9 @@ class TaskItem extends StatelessWidget {
                 const Text('april 19 , 2024'),
                 const Spacer(),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, EditNoteView.id);
+                  },
                   icon: const Icon(Icons.edit),
                 ),
                 IconButton(

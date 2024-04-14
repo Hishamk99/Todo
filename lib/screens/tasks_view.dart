@@ -4,6 +4,7 @@ import 'package:to_do_app/widgets/tasks_view_body.dart';
 
 class TasksView extends StatelessWidget {
   const TasksView({super.key});
+  static String id = 'TasksView';
 
   @override
   Widget build(BuildContext context) {

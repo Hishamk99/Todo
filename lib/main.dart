@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/screens/edit_note_view.dart';
 
 import 'screens/tasks_view.dart';
 
@@ -14,7 +15,11 @@ class ToDoApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      home: const TasksView(),
+      routes: {
+        TasksView.id: (context) => const TasksView(),
+        EditNoteView.id: (context) => const EditNoteView(),
+      },
+      initialRoute: TasksView.id,
     );
   }
 }
