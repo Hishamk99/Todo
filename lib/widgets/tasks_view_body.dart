@@ -6,6 +6,11 @@ class TasksViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const TaskItem();
+    return ListView.builder(
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return const TaskItem();
+      },
+    );
   }
 }

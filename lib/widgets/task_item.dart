@@ -32,7 +32,7 @@ class TaskItem extends StatelessWidget {
             ),
             Row(
               children: [
-                const Text('String 3'),
+                const Text('april 19 , 2024'),
                 const Spacer(),
                 IconButton(
                   onPressed: () {},
