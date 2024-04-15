@@ -31,4 +31,8 @@ class Api {
           'Theres a problem with status code ${response.statusCode}');
     }
   }
+
+  Future<void> delete({required String url}) async {
+    await http.delete(Uri.parse(url));
+  }
 }

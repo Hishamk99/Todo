@@ -3,8 +3,9 @@ import 'package:intl/intl.dart';
 import 'package:to_do_app/screens/edit_note_view.dart';
 
 class TaskItem extends StatelessWidget {
-  const TaskItem({super.key, required this.item});
+  const TaskItem({super.key, required this.item, required this.onPressed});
   final Map<String, dynamic> item;
+  final Future Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -47,7 +48,7 @@ class TaskItem extends StatelessWidget {
                   icon: const Icon(Icons.edit),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: onPressed,
                   icon: const Icon(
                     Icons.delete,
                     color: Colors.red,

@@ -9,6 +9,7 @@ class GetTasksCubit extends Cubit<GetTasksState> {
     emit(GetTasksLoading());
     try {
       tasksList = await GetTasks().getTasks();
+      tasksList!.reversed;
       emit(GetTasksSuccess(tasksList!));
       return tasksList;
     } catch (e) {

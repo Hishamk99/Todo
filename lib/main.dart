@@ -1,18 +1,16 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:to_do_app/cubits/get_tasks_cubit/get_tasks_cubit.dart';
-import 'package:to_do_app/helper/api.dart';
 import 'package:to_do_app/screens/edit_note_view.dart';
 import 'screens/tasks_view.dart';
 
-void main() async {
-  var data = await Api().post(body: {
-    'title': 'title',
-    'description': 'desc',
-    "is_completed": 'false',
-  }, url: 'https://api.nstack.in/v1/todos');
-  log(data.toString());
+void main() {
+  // var data = await Api().post(body: {
+  //   'title': 'title',
+  //   'description': 'desc',
+  //   "is_completed": 'false',
+  // }, url: 'https://api.nstack.in/v1/todos');
+  // log(data.toString());
   runApp(const ToDoApp());
 }
 
