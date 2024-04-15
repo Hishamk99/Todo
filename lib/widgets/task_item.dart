@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:to_do_app/screens/edit_note_view.dart';
 
 class TaskItem extends StatelessWidget {
@@ -33,7 +34,11 @@ class TaskItem extends StatelessWidget {
             ),
             Row(
               children: [
-                const Text('april 19 , 2024'),
+                Text(
+                  DateFormat.yMd().format(
+                    DateTime.now(),
+                  ),
+                ),
                 const Spacer(),
                 IconButton(
                   onPressed: () {

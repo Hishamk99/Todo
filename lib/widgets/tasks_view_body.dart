@@ -15,6 +15,7 @@ class TasksViewBody extends StatelessWidget {
             BlocProvider.of<GetTasksCubit>(context).tasksList ?? [];
         //       print(tasks);
         return ListView.builder(
+          reverse: true,
           itemCount: tasks.length,
           itemBuilder: (context, index) {
             return TaskItem(

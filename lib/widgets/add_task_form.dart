@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:to_do_app/cubits/add_task_cubit/add_task_state.dart';
 import 'package:to_do_app/cubits/add_task_cubit/add_tasks_cubit.dart';
+import 'package:to_do_app/cubits/get_tasks_cubit/get_tasks_cubit.dart';
 import 'package:to_do_app/widgets/custom_button.dart';
 import 'package:to_do_app/widgets/custom_text_field.dart';
 
@@ -55,6 +56,7 @@ class _AddTaskFormState extends State<AddTaskForm> {
                     formKey.currentState!.save();
                     BlocProvider.of<AddTasksCubit>(context)
                         .addTask(title: title!, desc: disc!);
+                    BlocProvider.of<GetTasksCubit>(context).getTask();
                   } else {
                     autovalidateMode = AutovalidateMode.always;
                     setState(() {});
