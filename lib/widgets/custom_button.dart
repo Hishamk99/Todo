@@ -6,8 +6,10 @@ class CustomButton extends StatelessWidget {
     super.key,
     required this.txt,
     this.onTap,
+    this.isLoading = false,
   });
   final String txt;
+  final bool isLoading;
   final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
@@ -21,14 +23,18 @@ class CustomButton extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         height: 50,
         child: Center(
-          child: Text(
-            txt,
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          child: isLoading
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Text(
+                  txt,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
         ),
       ),
     );

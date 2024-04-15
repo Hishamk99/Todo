@@ -1,10 +1,9 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:to_do_app/cubits/get_tasks_cubit/get_tasks_cubit.dart';
 import 'package:to_do_app/helper/api.dart';
 import 'package:to_do_app/screens/edit_note_view.dart';
-import 'cubits/add_task_cubit/add_tasks_cubit.dart';
 import 'screens/tasks_view.dart';
 
 void main() async {
@@ -22,10 +21,8 @@ class ToDoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => AddTasksCubit()),
-      ],
+    return BlocProvider(
+      create: (context) => GetTasksCubit(),
       child: MaterialApp(
         theme: ThemeData.dark(),
         debugShowCheckedModeBanner: false,

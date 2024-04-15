@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:to_do_app/cubits/get_tasks_cubit/get_tasks_cubit.dart';
 import 'package:to_do_app/widgets/add_task_modal_sheet.dart';
 import 'package:to_do_app/widgets/tasks_view_body.dart';
 
-class TasksView extends StatelessWidget {
+class TasksView extends StatefulWidget {
   const TasksView({super.key});
   static String id = 'TasksView';
+
+  @override
+  State<TasksView> createState() => _TasksViewState();
+}
+
+class _TasksViewState extends State<TasksView> {
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<GetTasksCubit>(context).getTasks();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +27,7 @@ class TasksView extends StatelessWidget {
         onPressed: () {
           showModalBottomSheet(
             context: context,
+            isScrollControlled: true,
             builder: (context) {
               return const AddTaskButtomSheet();
             },

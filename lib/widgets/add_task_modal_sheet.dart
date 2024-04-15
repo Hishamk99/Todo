@@ -1,8 +1,5 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:to_do_app/cubits/add_task_cubit/add_task_state.dart';
 import 'package:to_do_app/cubits/add_task_cubit/add_tasks_cubit.dart';
 import 'package:to_do_app/widgets/add_task_form.dart';
@@ -12,22 +9,40 @@ class AddTaskButtomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+    return BlocProvider(
+      create: (context) => AddTasksCubit(),
       child: BlocConsumer<AddTasksCubit, TaskState>(
         listener: (context, state) {
           if (state is TasksFailure) {
-            log('Failed ${state.errorMessage}');
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                backgroundColor: Colors.red,
+                content: Text('Failed'),
+              ),
+            );
           }
           if (state is TasksSuccess) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                backgroundColor: Colors.green,
+                content: Text('Success'),
+              ),
+            );
             Navigator.pop(context);
           }
         },
         builder: (context, state) {
-          return ModalProgressHUD(
-            inAsyncCall: state is TasksLoading ? true : false,
-            child: const SingleChildScrollView(
-              child: AddTaskForm(),
+          return AbsorbPointer(
+            absorbing: state is TasksLoading ? true : false,
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: 16,
+                right: 16,
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+              ),
+              child: const SingleChildScrollView(
+                child: AddTaskForm(),
+              ),
             ),
           );
         },
