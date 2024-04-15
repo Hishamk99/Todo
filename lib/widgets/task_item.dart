@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:to_do_app/screens/edit_note_view.dart';
 
 class TaskItem extends StatelessWidget {
-  const TaskItem({super.key});
-
+  const TaskItem({super.key, required this.item});
+  final Map<String, dynamic> item;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,16 +19,16 @@ class TaskItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'String 1',
-              style: TextStyle(fontSize: 20),
+            Text(
+              item['title'],
+              style: const TextStyle(fontSize: 20),
             ),
             const SizedBox(
               height: 10,
             ),
-            const Expanded(
+            Expanded(
               child: Text(
-                'String 2',
+                item['description'],
               ),
             ),
             Row(

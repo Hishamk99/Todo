@@ -11,10 +11,15 @@ class TasksViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<GetTasksCubit, GetTasksState>(
       builder: (context, state) {
+        List<dynamic> tasks =
+            BlocProvider.of<GetTasksCubit>(context).tasksList ?? [];
+        //       print(tasks);
         return ListView.builder(
-          itemCount: 10,
+          itemCount: tasks.length,
           itemBuilder: (context, index) {
-            return const TaskItem();
+            return TaskItem(
+              item: tasks[index],
+            );
           },
         );
       },

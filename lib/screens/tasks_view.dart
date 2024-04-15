@@ -16,7 +16,7 @@ class _TasksViewState extends State<TasksView> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<GetTasksCubit>(context).getTasks();
+    BlocProvider.of<GetTasksCubit>(context).getTask();
   }
 
   @override
