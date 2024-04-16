@@ -20,8 +20,8 @@ class TasksViewBody extends StatelessWidget {
           itemBuilder: (context, index) {
             return TaskItem(
               item: tasks[index],
-              onChanged: (value) async {
-                await UpdateTasks().updateCheckBox(
+              onChanged: (value) {
+                UpdateTasks().updateCheckBox(
                   check: value!,
                   item: tasks[index],
                 );

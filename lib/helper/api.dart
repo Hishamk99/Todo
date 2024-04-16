@@ -40,16 +40,13 @@ class Api {
     required String url,
     required Map<String, dynamic> body,
   }) async {
-    await http.put(
+    http.Response response = await http.put(
       Uri.parse(url),
       body: body,
     );
-    // if (response.statusCode == 200) {
-    //   Map<String, dynamic> data = jsonDecode(response.body);
-    //   return data;
-    // } else {
-    //   throw Exception(
-    //       'there was a problem with status code ${response.statusCode} with body${jsonDecode(response.body)}');
-    // }
+    if (response.statusCode != 200) {
+      throw Exception(
+          'there was a problem with status code ${response.statusCode} with body${jsonDecode(response.body)}');
+    }
   }
 }

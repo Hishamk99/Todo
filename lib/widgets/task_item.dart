@@ -10,7 +10,7 @@ class TaskItem extends StatelessWidget {
     required this.onChanged,
   });
   final Map<String, dynamic> item;
-  final Future<void> Function(bool?)? onChanged;
+  final void Function(bool?)? onChanged;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -53,7 +53,11 @@ class TaskItem extends StatelessWidget {
                 const Spacer(),
                 IconButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, EditNoteView.id);
+                    Navigator.pushNamed(
+                      context,
+                      EditNoteView.id,
+                      arguments: item,
+                    );
                   },
                   icon: const Icon(Icons.edit),
                 ),

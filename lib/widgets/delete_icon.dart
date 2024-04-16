@@ -19,12 +19,16 @@ class DeleteIcon extends StatelessWidget {
           context: context,
           builder: (context) {
             return AlertDialog(
-              icon: const Icon(Icons.warning),
+              icon: const Icon(
+                Icons.warning,
+                color: Colors.red,
+                size: 30,
+              ),
               title: const Text(
                 'Alert',
               ),
               content: const Text(
-                'Are you sure',
+                'Are you sure ?',
               ),
               actions: [
                 TextButton(
