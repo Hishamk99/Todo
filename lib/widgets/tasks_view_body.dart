@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:to_do_app/cubits/get_tasks_cubit/get_tasks_cubit.dart';
 import 'package:to_do_app/cubits/get_tasks_cubit/get_tasks_state.dart';
-import 'package:to_do_app/services/delete_task.dart';
+import 'package:to_do_app/services/update_task.dart';
 import 'package:to_do_app/widgets/task_item.dart';
 
 class TasksViewBody extends StatelessWidget {
@@ -20,8 +20,11 @@ class TasksViewBody extends StatelessWidget {
           itemBuilder: (context, index) {
             return TaskItem(
               item: tasks[index],
-              onPressed: () async {
-                await DeleteTasks().deleteTasks(id: tasks[index]['_id']);
+              onChanged: (value) async {
+                await UpdateTasks().updateCheckBox(
+                  check: value!,
+                  item: tasks[index],
+                );
                 BlocProvider.of<GetTasksCubit>(context).getTask();
               },
             );

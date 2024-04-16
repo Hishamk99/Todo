@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:to_do_app/screens/edit_note_view.dart';
+import 'package:to_do_app/widgets/delete_icon.dart';
 
 class TaskItem extends StatelessWidget {
-  const TaskItem({super.key, required this.item, required this.onPressed});
+  const TaskItem({
+    super.key,
+    required this.item,
+    required this.onChanged,
+  });
   final Map<String, dynamic> item;
-  final Future Function()? onPressed;
+  final Future<void> Function(bool?)? onChanged;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,7 +28,12 @@ class TaskItem extends StatelessWidget {
           children: [
             Text(
               item['title'],
-              style: const TextStyle(fontSize: 20),
+              style: TextStyle(
+                fontSize: 20,
+                decoration: item['is_completed']
+                    ? TextDecoration.lineThrough
+                    : TextDecoration.none,
+              ),
             ),
             const SizedBox(
               height: 10,
@@ -47,16 +57,10 @@ class TaskItem extends StatelessWidget {
                   },
                   icon: const Icon(Icons.edit),
                 ),
-                IconButton(
-                  onPressed: onPressed,
-                  icon: const Icon(
-                    Icons.delete,
-                    color: Colors.red,
-                  ),
-                ),
+                DeleteIcon(item: item),
                 Checkbox(
-                  value: false,
-                  onChanged: (value) {},
+                  value: item['is_completed'],
+                  onChanged: onChanged,
                 ),
               ],
             ),

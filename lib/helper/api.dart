@@ -35,4 +35,21 @@ class Api {
   Future<void> delete({required String url}) async {
     await http.delete(Uri.parse(url));
   }
+
+  Future<void> put({
+    required String url,
+    required Map<String, dynamic> body,
+  }) async {
+    await http.put(
+      Uri.parse(url),
+      body: body,
+    );
+    // if (response.statusCode == 200) {
+    //   Map<String, dynamic> data = jsonDecode(response.body);
+    //   return data;
+    // } else {
+    //   throw Exception(
+    //       'there was a problem with status code ${response.statusCode} with body${jsonDecode(response.body)}');
+    // }
+  }
 }
